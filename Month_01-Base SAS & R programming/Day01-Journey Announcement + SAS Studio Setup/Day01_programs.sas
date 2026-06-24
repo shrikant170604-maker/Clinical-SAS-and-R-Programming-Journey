@@ -1,5 +1,5 @@
 /*============================================*/
-/* DAY 1 — 15 June 2026                      */
+/* DAY 1                                     */
 /* Topic: Journey Start + SAS Studio Setup   */
 /* Programmer: Shrikant Kumar                */
 /* Institute: Clinical SAS Training          */
