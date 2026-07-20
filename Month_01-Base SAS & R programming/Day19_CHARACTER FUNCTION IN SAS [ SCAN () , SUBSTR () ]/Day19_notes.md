@@ -1,5 +1,5 @@
 SCAN() Function:-
-Consider SUBSTR() function as a word picker.
+Consider SCAN() function as a word picker.
 SCAN() extracts a specific word from a string.
 
 Syntax
