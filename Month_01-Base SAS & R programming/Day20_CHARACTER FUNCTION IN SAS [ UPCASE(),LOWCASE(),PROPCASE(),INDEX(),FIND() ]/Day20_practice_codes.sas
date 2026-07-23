@@ -1,0 +1,891 @@
+===================================================================
+📘 SAS Character Functions Practice Workbook with the help of AI
+=====================================================================
+🟢 Level 1 – Function Practice
+📌 COMPBL() – 5 Questions
+Remove multiple consecutive spaces from a patient's name.
+Clean the address by reducing extra spaces to a single space.
+Standardize department names containing multiple blanks.
+Remove extra spaces from an investigator's name.
+Clean a city variable before generating reports.
+📌 CAT() – 5 Questions
+Join First_Name and Last_Name without removing spaces.
+Create a Patient ID by joining Site_ID and Subject_No.
+Combine Department and Designation.
+Merge Country and State.
+Create a variable by joining Drug_Name and Strength.
+📌 CATT() – 5 Questions
+Concatenate First_Name and Last_Name after removing trailing blanks.
+Join Site_ID and Subject_ID.
+Create Visit_Code using Visit and Week.
+Merge Investigator and Department.
+Join Product and Batch_Number.
+📌 CATS() – 5 Questions
+Remove leading and trailing blanks while joining First_Name and Last_Name.
+Create Login_ID from User_Name and Employee_No.
+Join Drug and Dose.
+Merge Country and City.
+Create Patient_Login using Name and Patient_ID.
+📌 CATX() – 5 Questions
+Create Full_Address separated by commas.
+Generate Employee_Label using " | " as separator.
+Create Patient_Report using " : " separator.
+Generate File_Name using "_" separator.
+Create Study_ID using "-" separator.
+📌 SCAN() – 5 Questions
+Extract the first name from AMIT KUMAR.
+Extract the last name from AMIT KUMAR.
+Extract the employee number from EMP-101.
+Extract the email provider from AMIT@GMAIL.COM.
+Extract the site number from SITE01-SUB101.
+📌 SUBSTR() – 5 Questions
+Extract the first three letters of a city.
+Extract the last four digits from a phone number.
+Replace EMP with STAFF in Employee_ID.
+Extract the first letter of the patient's name.
+Create a three-letter course code.
+📌 UPCASE() – 5 Questions
+Convert employee names to uppercase.
+Convert city names to uppercase.
+Convert email providers to uppercase.
+Convert department names to uppercase.
+Convert investigator names to uppercase.
+📌 LOWCASE() – 5 Questions
+Convert email addresses to lowercase.
+Convert usernames to lowercase.
+Convert city names to lowercase.
+Convert department names to lowercase.
+Convert investigator names to lowercase.
+📌 PROPCASE() – 5 Questions
+Display employee names professionally.
+Display city names in proper case.
+Display department names in proper case.
+Display visit names in proper case.
+Display investigator names in proper case.
+📌 FIND() – 5 Questions
+Find "GMAIL" in Email.
+Find "SITE01" in Site_ID.
+Find "DR" in Investigator_Name.
+Find "SQL" in Course_Name.
+Find "TRIAL" in Study_Name.
+📌 INDEX() – 5 Questions
+Find the position of "@" in Email.
+Find the position of "-" in Subject_ID.
+Find the position of "_" in Investigator_Name.
+Find the position of "." in File_Name.
+Find the position of "COM" in Email.
+🟡 Level 2 – Business Scenario Questions
+Dataset: Employee
+Create a 3-letter city code.
+Extract only the employee number from Employee_ID.
+Generate a Login_ID using Name and Employee_Number.
+Create Employee_Label in the format EMP-101 | Ranchi.
+Remove all special characters from Phone_Number.
+Replace EMP with STAFF in Employee_ID.
+Find the position of "GMAIL" in Email.
+Create Employee_Code in the format RAN_101.
+Extract the email provider.
+Display employee names in proper case.
+Create SHRIKANT-RANCHI.
+Generate Username in the format SK101.
+Create GMAIL_SHRIKANT.
+Generate EMP-101 : Shrikant Kumar : Ranchi.
+Generate the file name EMP101_RANCHI.PDF.
+🟠 Level 3 – Student Scenario Questions
+Dataset: Course_Record
+Create a 3-letter city code.
+Extract only the numeric part from Student_ID.
+Generate Login_ID.
+Create Student_Label in the format S101 | Ranchi.
+Convert Email to lowercase.
+Display City in proper case.
+Find the position of "@" in Email.
+Find whether Email contains "GMAIL".
+Generate SAS_AMIT.
+Generate RAN_101.
+Create S101 : Amit : Ranchi.
+Generate AMIT_RANCHI.PDF.
+Extract the email provider.
+Replace Student_ID S101 with STU101.
+Generate Username in the format A101.
+🔵 Level 4 – Clinical SAS Beginner
+Dataset: Patient_Master
+Extract only the patient number from Subject_ID.
+Generate SITE01_101 using Site_ID and Patient_Number.
+Display the investigator name in proper case.
+Create SUB-101 | Week4.
+Find the position of "SITE02" in Site_ID.
+Generate Patient_Login_ID in the format AMIT101.
+Create SITE01-AMIT.
+Extract only the investigator surname from DR_SHARMA.
+Generate SHARMA_101.
+Replace SUB-101 with PT-101.
+Generate the file name SUB101_SITE01.PDF.
+Create the patient report in the format SUB-101 : Amit : Site01 : Screening.
+
+===========================================================================================================
+                                                         Solutions
+===========================================================================================================
+
+DATA EMPLOYEE_MASTER;
+INPUT EMP_ID $ EMP_NAME $40. DEPARTMENT $20. EMAIL $40. PHONE $20. CITY $20.;
+DATALINES;
+EMP-101 SHRIKANT_KUMAR CLINICAL_SAS SHRIKANT170604@GMAIL.COM +91-98765-43210 RANCHI
+EMP-102 RAHUL_SHARMA DATA_MANAGEMENT RAHUL@YAHOO.COM +91-99887-12345 DELHI
+EMP-103 PRIYA_SINGH BIOSTATISTICS PRIYA.SINGH@OUTLOOK.COM +91-91234-56789 MUMBAI
+EMP-104 AMIT_VERMA SAS_PROGRAMMER AMIT_VERMA@GMAIL.COM +91-98700-11122 PUNE
+EMP-105 NEHA_GUPTA CLINICAL_DATA NEHA123@HOTMAIL.COM +91-90123-45678 HYDERABAD
+;
+RUN;
+
+/* COMPBL - IT HELPS TO REMOVE MULTIPLE SPACE TO SINGLE SPACE */
+/* EXAMPLE-1 */
+DATA COMPBL1;
+SET EMPLOYEE_MASTER;
+MULTIPLE_SPACE=COMPBL(EMPLOYE_NAME);
+RUN;
+
+/* EXAMPLE-2 */
+DATA COMPBL2;
+PROGRAM="CLINICAL   SAS     PROGRAMMER";
+CLEAN=COMPBL(PROGRAM);
+RUN;
+
+/* EXAMPLE-3 */
+DATA COMPBL3;
+CITY="          NEW             CITY     ";
+NEWVAR=COMPBL(CITY);
+RUN;
+
+/* EXAMPLE-4 */
+DATA COMPBL4;
+LABRARY="SAS     HAS    TWO   TYPES    OF LIBRARY";
+CLEAN_OUTPUT=COMPBL(LABRARY);
+RUN;
+
+/* EXAMPLE-5 */
+DATA COMPBL5;
+VALUE=" CLEANED       VALUE      ";
+CLEANED_NAME=COMPBL(VALUE);
+RUN;
+
+/* CAT-USED TO CONCATENATE THE STRING */
+
+/* EXAMPLE-1 */
+DATA CAT1;
+SET employee_master;
+CONCATENATE1=CAT(EMP_ID,CITY);
+RUN;
+
+/* EXAMPLE-2 */
+DATA CAT2;
+SET EMPLOYEE_MASTER;
+CONCATENATE2=CAT(EMP_NAME,DEPARTMENT,CITY);
+RUN;
+
+/* EXAMPLE-3 */
+DATA CAT3;
+SET EMPLOYEE_MASTER;
+EMP_EMAIL=CAT(EMP_NAME,EMAIL);
+RUN;
+
+/* EXAMPLE-4 */
+DATA CAT4;
+SET EMPLOYEE_MASTER;
+EMPLOYEE=CAT(EMP_ID,"EMPLOYEE");
+RUN;
+
+/* EXAMPLE-5 */
+DATA CAT5;
+SET EMPLOYEE_MASTER;
+MOB_no=CAT(CITY,PHONE);
+RUN;
+
+/* CATT()- IT HELP TO CONCATENATE BY REMOVE TRAILING SPACE FROM EACH STRING */
+
+/* EXAMPLE-1 */
+DATA CATT1;
+SET EMPLOYEE_MASTER;
+NEW_VAR1=CATT(EMP_NAME,CITY);
+RUN;
+
+/* EXAMPLE_2 */
+DATA CATT2;
+SET EMPLOYEE_MASTER;
+NEW_VAR2=CATT(EMP_ID,DEPARTMENT);
+RUN;
+
+/* EXAMPLE_3 */
+DATA CATT3;
+SET EMPLOYEE_MASTER;
+JOIN=CATT(EMP_NAME,"SAS");
+RUN;
+
+/* EXAMPLE_4 */
+DATA CATT4;
+SET EMPLOYEE_MASTER;
+EMP_CODE=CATT(CITY,EMP_ID);
+RUN;
+
+/* EXAMPLE_5 */
+DATA CATT5;
+SET EMPLOYEE_MASTER;
+NEWVAR3=CATT(EMAIL,PHONE);
+RUN;
+
+/* CATS */
+/* EXAMPLE1 */
+DATA CATS1;
+SET EMPLOYEE_MASTER;
+JOIN1=CATS(EMP_NAME,CITY);
+RUN;
+
+/* EXAMPLE2 */
+DATA CATS2;
+SET EMPLOYEE_MASTER;
+JOIN2=CATS(EMP_ID,CITY,PHONE);
+RUN;
+
+/* EXAMPLE3 */
+DATA CATS3;
+SET EMPLOYEE_MASTER;
+JOIN3=CATS("CLINICAL",DEPARTMENT);
+RUN;
+
+/* EXAMPLE_4 */
+DATA CATS4;
+SET EMPLOYEE_MASTER;
+LOGIN_ID=CATS(EMP_NAME,EMP_ID);
+RUN;
+
+/* EXAMPLE_5 */
+DATA CATS5;
+SET EMPLOYEE_MASTER;
+JOIN4=CATS(CITY,EMAIL,PHONE);
+RUN;
+
+/* CATX */
+/* EXAMPLE1 */
+DATA CATX1;
+SET EMPLOYEE_MASTER;
+JOIN1=CATX("-",EMP_NAME,CITY);
+RUN;
+
+/* EXAMPLE2 */
+DATA CATX2;
+SET EMPLOYEE_MASTER;
+FULL_INFO=CATX("|",EMP_ID,EMP_NAME,DEPARTMENT,EMAIL,PHONE,CITY);
+RUN;
+
+/* EXAMPLE3 */
+DATA CATX3;
+SET EMPLOYEE_MASTER;
+JOIN2=CATX(":",EMP_ID,DEPARTMENT,CITY);
+RUN;
+
+/* EXAMPLE4 */
+DATA CATX4;
+SET EMPLOYEE_MASTER;
+EMPLOYEE_PATH=CATX("/",EMP_ID,EMP_NAME,DEPARTMENT,EMAIL,PHONE,CITY);
+RUN;
+
+/* EXAMPLE5 */
+
+DATA CATX5;
+SET EMPLOYEE_MASTER;
+JOIN_ALL=CATX("~",EMP_ID,EMP_NAME,DEPARTMENT,EMAIL,PHONE,CITY);
+RUN;
+
+/* SCAN */
+/* EXAMPLE_1 */
+DATA SCAN1;
+SET EMPLOYEE_MASTER;
+EMP_NO=SCAN(EMP_ID,2,"-");
+RUN;
+
+/* EXAMPLE2 */
+DATA SCAN2;
+SET EMPLOYEE_MASTER;
+EXTRACT2=SCAN(EMP_NAME,2,"_");
+RUN;
+
+/* EXAMPLE_3 */
+DATA SCAN3;
+VARIABLE="CLINICAL_SAS";
+EXTRACTSAS=SCAN(VARIABLE,2,"_");
+RUN;
+
+/* EXAMPLE4 */
+DATA SCAN4;
+SET EMPLOYEE_MASTER;
+EMAIL_DOMAIN=SCAN(EMAIL,1,"@");
+RUN;
+
+/* EXAMPLE5 */
+DATA SCAN5;
+SET EMPLOYEE_MASTER;
+COUNTRY_CODE=SCAN(PHONE,1,"-");
+RUN;
+
+/* SUBSTR() */
+
+/* EXAMPLE1 */
+DATA SUBSTR1;
+SET EMPLOYEE_MASTER;
+EXTRACT1=SUBSTR(EMP_ID,1,3);
+RUN;
+
+/* EXAMPLE2 */
+DATA SUBSTR2;
+SET EMPLOYEE_MASTER;
+SUBSTR(EMP_ID,1,3)="WRK";
+RUN;
+
+/* EXAMPLE3 */
+DATA SUBSTR3;
+SET EMPLOYEE_MASTER;
+EXTRACT5=SUBSTR(EMP_NAME,1,5);
+RUN;
+
+/* EXAMPLE4 */
+DATA SUBSTR4;
+SET EMPLOYEE_MASTER;
+SUBSTR(CITY,1,3)="NEW";
+RUN;
+
+/* EXAMPLE5 */
+DATA SUBSTR5;
+SET EMPLOYEE_MASTER;
+EXTRACT=SUBSTR(PHONE,5,5);
+RUN;
+
+PROC PRINT DATA=SUBSTR5;
+RUN;
+
+/* UPCASE */
+
+/* EXAMPLE1 */
+DATA UPCASE1;
+SET EMPLOYEE_MASTER;
+RESULT1=UPCASE(EMP_NAME);
+RUN;
+
+/* EXAMPLE2 */
+DATA UPCASE2;
+SET EMPLOYEE_MASTER;
+RESULT2=UPCASE(CITY);
+RUN;
+
+/* EXAMPLE3 */
+DATA UPCASE3;
+SET EMPLOYEE_MASTER;
+RESULT3=UPCASE(EMAIL);
+RUN;
+
+/* EXAMPLE4 */
+DATA UPCASE4;
+SET EMPLOYEE_MASTER;
+RESULT4=UPCASE(DEPARTMENT);
+RUN;
+
+/* EXAMPLE5 */
+DATA UPCASE5;
+SET EMPLOYEE_MASTER;
+UPPER_INFO=UPCASE(CAT(EMP_NAME,CITY));
+RUN;
+
+/* LOWCASE */
+
+/* EXAMPLE1 */
+DATA LOWCASE1;
+SET EMPLOYEE_MASTER;
+CONVERT1=LOWCASE(EMP_NAME);
+RUN;
+
+/* EXAMPLE2 */
+DATA LOWCASE2;
+SET EMPLOYEE_MASTER;
+CONVERT2=LOWCASE(EMAIL);
+RUN;
+
+/* EXAMPLE3 */
+DATA LOWCASE3;
+SET EMPLOYEE_MASTER;
+CONVERT3=LOWCASE(CITY);
+RUN;
+
+/* EXAMPLE 4 */
+DATA LOWCASE4;
+SET EMPLOYEE_MASTER;
+CONVERT4=LOWCASE(DEPARTMENT);
+RUN;
+
+/* EXAMPLE5 */
+DATA LOWCASE5;
+SET EMPLOYEE_MASTER;
+RESULT=LOWCASE(CAT(EMP_NAME,CITY));
+RUN;
+
+/* PROPCASE */
+
+/* EXAMPLE1 */
+DATA PROPCASE;
+SET EMPLOYEE_MASTER
+CONVERT1=PROPCASE(EMP_NAME);
+RUN;
+
+/* EXAMPLE2 */
+DATA PROPCASE2;
+SET EMPLOYEE_MASTER;
+CONVERT2=PROPCASE(CITY);
+RUN;
+
+/* EXAMPLE3 */
+DATA PROPCASE3;
+SET EMPLOYEE_MASTER;
+CONVERT3=PROPCASE(DEPARTMENT);
+RUN;
+
+/* EXAMPLE4 */
+DATA PROPCASE4;
+SET EMPLOYEE_MASTER;
+CONVERT4=PROPCASE(EMAIL);
+RUN;
+
+/* EXAMPLE5 */
+DATA PROPCASE5;
+SET EMPLOYEE_MASTER;
+DISPLAY_NAME=PROPCASE(EMP_NAME);
+RUN;
+
+/* FIND() */
+
+/* EXAMPLE 1 */
+DATA FIND1;
+SET EMPLOYEE_MASTER;
+POSITION1=FIND(DEPARTMENT,"SAS","I");
+RUN;
+
+/* EXAMPLE_2 */
+DATA FIND2;
+SET EMPLOYEE_MASTER;
+POSITION2=FIND(EMAIL,"@","I");
+RUN;
+
+/* EXAMPLE3 */
+DATA FIND3;
+SET EMPLOYEE_MASTER;
+POSITION3=FIND(PHONE,"91");
+RUN;
+
+/* EXAMPLE4 */
+DATA FIND4;
+SET EMPLOYEE_MASTER;
+POSITION4=FIND(EMP_NAME,"KUMAR","I");
+RUN;
+
+/* EXAMPLE5 */
+DATA FIND5;
+SET EMPLOYEE_MASTER;
+POSITION5=FIND(DEPARTMENT);
+RUN;
+
+/* INDEX() */
+
+/* EXAMPLE1 */
+DATA INDEX1;
+SET EMPLOYEE_MASTER;
+POSITION6=INDEX(EMP_ID,"EMP");
+RUN;
+
+/* EXAMPLE2 */
+DATA INDEX2;
+SET EMPLOYEE_MASTER;
+POSITION7=INDEX(EMP_NAME,"_");
+RUN;
+
+/* EXAMPLE3 */
+DATA INDEX3;
+SET EMPLOYEE_MASTER;
+POSITION8=INDEX(EMAIL,"GMAIL");
+RUN;
+
+/* EXAMPLE4 */
+DATA INDEX4;
+SET EMPLOYEE_MASTER;
+POSITION9=INDEX(PHONE,"+");
+RUN;
+
+/* EXAMPLE5 */
+DATA INDEX5;
+SET EMPLOYEE_MASTER;
+POSITION10=INDEX(DEPARTMENT,"SAS");
+RUN;
+
+
+                /* BOUNOUS QUESTIONS/EXAMPLES- SCENARIO BASED  */
+
+/* =========================================================================================== */
+                                          /* LEVEL-1 */
+/* =========================================================================================== */
+DATA STUDENT_MASTER;
+INPUT ID $ NAME $ CITY $ COURSE $;
+CARDS;
+S101 SHRIKANT RANCHI SAS
+S102 RAHUL DELHI R
+S103 PRIYA MUMBAI PYTHON
+S104 AMAN PUNE SQL
+S105 NEHA HYDERABAD EXCEL
+;
+RUN;
+
+/* Q1 */
+DATA CP1;
+SET STUDENT_MASTER;
+STUDENT_NO=SCAN(ID,1,'S');
+RUN;
+
+/* Q2 */
+DATA CP2;
+SET STUDENT_MASTER;
+NEW_ID=CATS("ST",SUBSTR(ID,2,3));
+RUN;
+
+/* Q3 */
+DATA CP3;
+SET STUDENT_MASTER;
+UP_CASECITY=UPCASE(CITY);
+RUN;
+
+/* Q4 */
+DATA CP4;
+SET STUDENT_MASTER;
+LOW_COURSE=LOWCASE(COURSE);
+RUN;
+
+/* Q5 */
+DATA CP5;
+SET STUDENT_MASTER;
+PRINT_DATA=PROPCASE(CITY);
+RUN;
+
+/* Q6 */
+DATA CP6;
+SET STUDENT_MASTER;
+STUDENT_INFO=CATX("|",ID,NAME,CITY);
+RUN;
+
+/* Q7 */
+DATA CP7;
+SET STUDENT_MASTER;
+POSTION_A=INDEX(NAME,"A");
+RUN;
+
+/* Q8 */
+DATA CP8;
+SET EMPLOYEE_MASTER;
+SEARCH_SAS=FIND(COURSE,"SAS","I");
+RUN;
+
+/* Q9 */
+
+DATA CP9;
+NAME="SHRIKANT     KUMAR";
+NEW_NAME=COMPBL(NAME);
+RUN;
+
+/* Q10 */
+
+DATA CP10;
+SET STUDENT_MASTER;
+LOGIN_ID=CATS(ID,NAME);
+RUN;
+
+/* ========================================================================================== */
+                                      /* Level-2 */
+/* ============================================================================================= */
+DATA EMPLOYEE;
+INPUT EMP_ID $ NAME $25. EMAIL $40. CITY $20. PHONE $20.;
+DATALINES;
+EMP-101 SHRIKANT_KUMAR SHRIKANT@GMAIL.COM RANCHI +91-98765-43210
+EMP-102 RAHUL_SHARMA RAHUL@YAHOO.COM DELHI +91-99887-12345
+EMP-103 PRIYA_SINGH PRIYA@OUTLOOK.COM MUMBAI +91-91234-56789
+EMP-104 AMIT_VERMA AMIT@GMAIL.COM PUNE +91-98700-11122
+EMP-105 NEHA_GUPTA NEHA@HOTMAIL.COM HYDERABAD +91-90123-45678
+;
+RUN;
+
+/* QUESTION_1 */
+DATA CITY_CODE;
+SET EMPLOYEE;
+FIRST_3=SUBSTR(CITY,1,3);
+RUN;
+
+/* QUESTION_2 */
+DATA EMPLOYEE_RECORD;
+SET EMPLOYEE;
+EMPLOYEE_NO=SCAN(EMP_ID,2,"-");
+RUN;
+
+/* QUESTION_3 */
+DATA NAMES;
+SET EMPLOYEE;
+UPCASE_NAME=UPCASE(NAME);
+RUN;
+
+/* QUESTION_4 */
+DATA EMAIL_RECORD;
+SET EMPLOYEE;
+NEW_MAIL=LOWCASE(EMAIL);
+RUN;
+
+/* QUESTION_5 */
+DATA CITY_RECORD;
+SET EMPLOYEE;
+NEW_PROP=PROPCASE(CITY);
+RUN;
+
+/* QUESTION_6 */
+DATA NAME2
+VAR="SHRIKANT      KUMAR";
+NEW_NAME=COMPBL(VAR);
+RUN;
+
+/* QUESTION_7 */
+DATA RECORD1;
+SET EMPLOYEE;
+NEW_VAR=CAT(EMP_ID,NAME);
+RUN;
+
+/* QUESTION_8 */
+DATA LOGIN_RECORD;
+SET EMPLOYEE;
+LOGIN_ID=CATS(NAME,CITY);
+RUN;
+
+/* QUESTION_9 */
+DATA INFO;
+SET EMPLOYEE;
+NEW_NAME=CATX("|",EMP_ID,NAME,CITY);
+RUN;
+
+/* QUESTION_10 */
+DATA EMAILA_RECORD;
+SET EMPLOYEE;
+POSITION_OF=INDEX(EMAI_ID,"@");
+RUN;
+
+/* QUESTION_11 */
+DATA LOCATION;
+SET EMPLOYEE;
+POSITION_MAIL=FIND(EMAIL,"GMAIL","I");
+RUN;
+
+/* QUESTION_12 */
+DATA CREATE;
+SET EMPLOYEE;
+NEW_EMP=COMPRESS(EMP_ID,"-");
+RUN;
+
+/* ======================================================================================== */
+                                       /* LEVEL-3 */
+/* ======================================================================================== */
+DATA COURSE_RECORD;
+INPUT STUDENT_ID $ NAME $ COURSE $ CITY $ EMAIL $;
+DATALINES;
+S101 AMIT SAS RANCHI AMIT@GMAIL.COM
+S102 PRIYA R DELHI PRIYA@YAHOO.COM
+S103 RAHUL PYTHON MUMBAI RAHUL@OUTLOOK.COM
+S104 NEHA SQL PUNE NEHA@HOTMAIL.COM
+S105 ROHAN EXCEL JAIPUR ROHAN@GMAIL.COM
+;
+RUN;
+
+/* Q1 */
+DATA Q1;
+SET COURSE_RECORD;
+CITY_CODE=SUBSTR(CITY,1,3);
+RUN;
+
+/* Q2 */
+DATA Q2;
+SET COURSE_RECORD;
+STUDENT_NO=COMPRESS(STUDENT_ID,"","A");
+RUN;
+
+/* Q3 */
+DATA Q3;
+SET Q2;
+LOG_ID=CAT(NAME,STUDENT_NO);
+RUN;
+
+/* Q4 */
+DATA Q4;
+SET COURSE_RECORD;
+STUDENT_LABEL=CATX("|",STUDENT_ID,CITY);
+RUN;
+
+/* Q5 */
+DATA Q5;
+SET COURSE_RECORD;
+NEW_EMAIL=LOWCASE(EMAIL);
+RUN;
+
+/* Q6 */
+DATA Q6;
+SET COURSE_RECORD;
+CITY_RECORD=PROPCASE(CITY);
+RUN;
+
+/* Q7 */
+DATA Q7;
+SET COURSE_RECORD;
+POSITINON_NO=INDEX(EMAIL,"@");
+RUN;
+
+/* Q8 */
+DATA Q8;
+SET COURSE_RECORD;
+POSITION=FIND(EMAIL,"GMAIL","I");
+RUN;
+
+/* Q9 */
+DATA Q9;
+SET COURSE_RECORD;
+NEW_VAR=CATX("_",COURSE,NAME);
+RUN;
+
+/* Q10 */
+DATA Q10;
+SET COURSE_RECORD;
+ID=SUBSTR(STUDENT_ID,2,3);
+CITY=SUBSTR(CITY,1,3);
+REQUIRED=CATX("_",CITY,ID);
+RUN;
+
+/* Q11 */
+DATA Q11;
+SET COURSE_RECORD;
+GENERATE=CATX(" : ",STUDENT_ID,NAME,CITY);
+RUN;
+
+/* Q12 */
+DATA Q12;
+SET COURSE_RECORD; 
+HALF=CAT(CITY,".PDF");
+GENERATE=CATX("_",NAME,HALF);
+RUN;
+
+/* Q13 */
+DATA Q13;
+SET COURSE_RECORD;
+EMAIL_PROVIER=SCAN(EMAIL,2,"@.");
+RUN;
+
+/* Q14 */
+DATA Q14;
+SET COURSE_RECORD;
+OLD_ID=COMPRESS(STUDENT_ID,"","A");
+NEW_ID=CAT("STU",OLD_ID);
+RUN;
+
+/* Q15 */
+DATA Q15;
+SET COURSE_RECORD;
+LETTER=SUBSTR(NAME,1,1);
+NO=COMPRESS(STUDENT_ID,"","A");
+NEW_STUDENT_ID=CAT(LETTER,NO);
+RUN;
+
+DATA PATIENT_MASTER;
+INPUT SUBJECT_ID $ PATIENT_NAME $ SITE_ID $ VISIT $ INVESTIGATOR $;
+DATALINES;
+SUB-101 AMIT SITE01 SCREENING DR_SHARMA
+SUB-102 PRIYA SITE02 BASELINE DR_GUPTA
+SUB-103 RAHUL SITE03 WEEK4 DR_VERMA
+SUB-104 NEHA SITE01 WEEK8 DR_SHARMA
+SUB-105 ROHAN SITE02 FOLLOWUP DR_GUPTA
+;
+RUN;
+
+/* Q1 */
+DATA Q1;
+SET PATIENT_MASTER;
+PATIENT_NO=SCAN(SUBJECT_ID,2,"-");
+RUN;
+
+/* Q2 */
+DATA Q2;
+SET PATIENT_MASTER;
+PATIENT_NO=SCAN(SUBJECT_ID,2,"-");
+NEW_SITENO=CATX("_",SITE_ID,PATIENT_NO);
+RUN;
+
+/* Q3 */
+DATA Q3;
+SET PATIENT_MASTER;
+FIRST=SCAN(INVESTIGATOR,1,"_");
+FIRST_PREFIX=PROPCASE(FIRST);
+LAST=SCAN(INVESTIGATOR,2,"_");
+LAST_NAME=PROPCASE(LAST);
+FINAL_NAME=CATX(" ",FIRST_PREFIX,LAST_NAME);
+RUN;
+
+/* Q4 */
+DATA Q4;
+SET PATIENT_MASTER;
+FINAL_DATA=CATX(" | ",SUBJECT_ID,PROPCASE(VISIT));
+RUN;
+
+/* Q5 */
+DATA Q5;
+SET PATIENT_MASTER;
+STORE_POSITION=FIND(SITE_ID,"SITE02","I");
+RUN;
+
+/* Q6 */
+DATA Q6;
+SET PATIENT_MASTER;
+LOGIN_ID=CATS(PATIENT_NAME,
+SCAN(SUBJECT_ID,2,"-"));
+RUN;
+
+/* Q7 */
+DATA Q10;
+SET PATIENT_MASTER;
+SITE_ID=CATX("-",SITE_ID,PATIENT_NAME);
+RUN;
+
+/* Q8 */
+DATA Q8;
+SET PATIENT_MASTER;
+EXTRACT=SCAN(INVESTIGATOR,2,"_");
+RUN;
+
+/* Q9 */
+DATA Q9;
+SET PATIENT_MASTER;
+CREATED_DATA=CATX("_",
+SCAN(INVESTIGATOR,2,"_"),
+SCAN(SUBJECT_ID,2,"-"));
+RUN;
+
+/* Q10 */
+DATA Q10;
+SET PATIENT_MASTER;
+NEW_ID=CATX("-","PT",SCAN(SUBJECT_ID,2,"-"));
+RUN;
+
+/* Q11 */
+DATA Q11;
+SET PATIENT_MASTER;
+GENERATED_VALUE=CATS(COMPRESS(SUBJECT_ID,"-"),"_",SITE_ID,".PDF");
+RUN;
+
+/* Q12 */
+DATA Q12;
+SET PATIENT_MASTER;
+EXPECTION=CATX(" : ",SUBJECT_ID,PATIENT_NAME,SITE_ID,VISIT);
+RUN;
+
+
