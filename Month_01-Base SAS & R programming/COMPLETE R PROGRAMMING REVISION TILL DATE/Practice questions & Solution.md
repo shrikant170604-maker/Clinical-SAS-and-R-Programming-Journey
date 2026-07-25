@@ -605,3 +605,8 @@ subject[weight>70 & weight<80]
 subject_id=subject[age>65 ]
 subject_id=subject[age>75 ]
 
+
+
+
+
+PLEASE HAVE A LOOK ON PRACTICE QUESTIONS
