@@ -1,0 +1,415 @@
+These are the questions taken from chat gpt Answer are followed after Questions
+  ===============================================================================
+🟢 Level 1 — Basic Function Logic
+Q1. Square Function
+
+Create a function square_num() that accepts a number and returns its square.
+
+Test:
+
+square_num(7)
+square_num(12)
+Q2. Even or Odd
+
+Create a function check_even() that accepts a number and returns:
+
+"Even" if the number is even
+"Odd" if the number is odd
+
+Test:
+
+check_even(18)
+check_even(25)
+Q3. Calculate Age
+
+Create a function calculate_age() that accepts birth_year and current_year and returns the person's age.
+
+Test:
+
+calculate_age(2000, 2026)
+calculate_age(1995, 2026)
+Q4. Find Maximum
+
+Create a function find_max() that accepts two numbers and returns the larger number.
+
+Test:
+
+find_max(25, 40)
+find_max(100, 75)
+Q5. Temperature Conversion
+
+Create a function celsius_to_fahrenheit().
+
+Formula:
+
+F = (C × 9/5) + 32
+
+Test:
+
+celsius_to_fahrenheit(0)
+celsius_to_fahrenheit(37)
+🟡 Level 2 — Vector-Based Functions
+Q6. Vector Mean
+
+Create a function calculate_mean() that accepts a numeric vector and returns its mean.
+
+x <- c(10, 20, 30, 40, 50)
+
+Expected result:
+
+30
+Q7. Count Values Above 50
+
+Create a function count_above_50() that accepts a numeric vector and returns how many values are greater than 50.
+
+weight <- c(45, 62, 55, 71, 48, 80, 67)
+Q8. Find Maximum Weight
+
+Create a function max_weight() that accepts a weight vector and returns the highest weight.
+
+weight <- c(58, 74, 63, 81, 69, 72)
+Q9. Extract Values
+
+Create a function get_above_60() that accepts a numeric vector and returns only values greater than 60.
+
+age <- c(25, 62, 48, 71, 35, 55, 67, 29)
+
+Expected output:
+
+62 71 67
+Q10. Count Unique Values
+
+Create a function count_unique() that accepts a vector and returns the number of unique values.
+
+drug <- c("A", "B", "A", "C", "B", "A", "D")
+
+Expected result:
+
+4
+🟠 Level 3 — Logic + Functions
+
+Now we combine functions + conditions + vectors.
+
+Q11. Patient Risk Function
+
+Create:
+
+risk_status <- function(age, weight)
+
+Rules:
+
+Age ≥ 60 AND weight ≥ 70 → "High Risk"
+Otherwise → "Normal Risk"
+
+Test:
+
+risk_status(65, 75)
+risk_status(45, 80)
+risk_status(70, 60)
+Q12. Treatment Eligibility
+
+Create:
+
+eligible <- function(age, weight)
+
+A patient is eligible if:
+
+age >= 18 AND weight >= 50
+
+Return:
+
+"Eligible"
+"Not Eligible"
+
+Test:
+
+eligible(25, 60)
+eligible(17, 65)
+eligible(40, 45)
+Q13. Patient Age Category
+
+Create:
+
+age_group <- function(age)
+
+Rules:
+
+Age	Category
+< 18	"Child"
+18–59	"Adult"
+≥ 60	"Senior"
+
+Test:
+
+age_group(15)
+age_group(35)
+age_group(65)
+Q14. Drug Check
+
+Create:
+
+check_drug <- function(drug)
+
+If the drug is "DrugA" or "DrugB", return:
+
+"Approved"
+
+Otherwise:
+
+"Not Approved"
+
+Test:
+
+check_drug("DrugA")
+check_drug("DrugC")
+
+===================================================================================================================
+=================================================================================================================
+							ANSWERS
+===================================================================================================================
+=================================================================================================================
+#create a function to calculate mean of any vector
+name1=function(x){
+  s=sum(x)
+  n=length(x)
+  mn=s/n
+  return(mn)
+}
+
+
+Raised_power=function(x1,x2){
+  s1=exp(x2*log(x1))
+      return(s1)
+}
+
+Raised_power(5,4)
+Raised_power(4,(1/2))
+sqrt(4)
+
+product=function(a,b){
+  c1=(a*b)
+  return(c1)
+}
+product(4,5)
+
+left_no=function()
+#creating a min,max
+
+
+b=c(4,6,2,3,2,1,8)
+  
+om=function(v){
+  n=length(v)
+  sr=sort(v)
+  mn=sr[1]
+  mx=sr[n]
+  return(c("min"=mn,"max"=mx))
+  
+}
+
+om(b)
+om(a)
+Raised_power
+addition=function(v1){
+  a=cumsum(v1)
+  b=length(v1)
+  add=cumsum(v1)[length(v1)]
+  return(add)
+  
+}
+sum(v1)
+addition(v1)
+sum(b)
+addition(b)
+
+#Example 1 (function without arguments)
+greet=function(){
+  print("welcome to R programming")
+}
+greet()
+
+#example 2 (function with one arguments)
+sqare=function(a){
+  e=(a^2)
+  return(e)
+
+}
+sqare(3)
+sqare(2)
+
+#example 3 (FUNCTION WITH MULTIPLE ARGUMENTS)
+add_no=function(a,b){
+  z=a+b
+  return(z)
+}
+add_no(4,5)
+
+#example 4 (function with default argument)
+greet=function(name="user"){
+  paste("hello",name)
+}
+
+greet("Shrikant")
+
+#example 5 (function returning multiple values)
+stats=function(x){
+  list(
+    mean=mean(x),
+    median=median(x),
+    sd=sd(x)
+  )
+  return(list("mean","median","sd"))
+}
+
+data=c(4,3,2,1,9,8,7,4)
+stats(data)
+
+#======= LEVEL 1 ====================
+
+#q1
+square_num=function(x){
+  p=(x^2)
+  return(p)
+}
+square_num(7)
+square_num(12)
+
+#q2
+check_even=function(z){
+  a=ifelse(z%%2==0,"Even","Odd")
+  return(a)
+}
+check_even(18)
+check_even(25)
+
+#q3
+calculate_age=function(p,q){
+  current_age=(q-p)
+  return(current_age)
+}
+calculate_age(2000, 2026)
+calculate_age(1995, 2026)
+
+#q4
+find_max=function(m,n){
+  a=max(m,n)
+  return(a)
+}
+find_max(25, 40)
+find_max(100, 75)
+
+#q5
+celsius_to_fahrenheit=function(a){
+  formula=(a*9/5)+32
+  return(formula)
+}
+celsius_to_fahrenheit(0)
+celsius_to_fahrenheit(37)
+
+#q6
+calculate_mean=function(a){
+  cumsum=cumsum(a)
+  last_value=cumsum[length(a)]
+  n=length(a)
+  mean=(last_value/n)
+  return(mean)
+}
+x=c(10,20,30,40,50)
+calculate_mean(x)
+
+#q7
+count_above_50=function(a){
+  greater=a[a>50]
+  return(length(greater))
+}
+weight <- c(45, 62, 55, 71, 48, 80, 67)
+count_above_50(weight)
+
+#q8
+max_weight=function(s){
+  max=sort(s,decreasing=TRUE)
+  extract=max[1]
+  return(extract)
+}
+weight <- c(58, 74, 63, 81, 69, 72)
+max_weight(weight)
+
+#q9
+get_above_60=function(a){
+  plus60=a[a>60]
+  return(plus60)
+}
+age <- c(25, 62, 48, 71, 35, 55, 67, 29)
+get_above_60(age)
+
+#q10
+count_unique=function(x){
+  oneonly=length(unique(x))
+  return(oneonly)
+}
+drug <- c("A", "B", "A", "C", "B", "A", "D")
+count_unique(drug)
+
+#q11
+risk_status=function(a,b){
+  s=a>=60
+  t=b>=70
+  res=s& t
+  compare=ifelse(res,"High risk","normal risk")
+  return(compare)
+}
+risk_status(65,75)
+risk_status(45, 80)
+risk_status(70, 60)
+
+#q12
+eligible=function(age,weight){
+  a=age>=18
+  w=weight>=50
+  com=age>=18 & weight>=50
+  compare=ifelse(com,"Eligible","Not Eligible")
+  return(compare)
+}
+eligible(25, 60)
+eligible(17, 65)
+eligible(40, 45)
+
+#q13
+age_group <- function(age) {
+  ifelse(age < 18, "Child",
+         ifelse(age < 60, "Adult", "Senior"))
+}
+age_group(15)
+age_group(35)
+age_group(65)
+
+#q14
+check_drug=function(drug){
+  ifelse(drug=="DrugA"|drug=="DrugB","Approved","Not Approved" )
+}
+
+check_drug("DrugA")
+check_drug("DrugC")
+check_drug("DrugB")
+
+#Bridge_exersises
+#q15a
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005")
+
+age <- c(25,62,48,71,35)
+
+weight <- c(58,74,63,81,69)
+
+get_senior=function(subject,age){
+  subject[age>=60]
+  
+}
+subject[age>=60]
+get_senior(subject,age)
+
+#q15b
+get_heavy=function(subject,weight){
+  return(subject[weight>=70])
+  
+}
+get_heavy(subject,weight)
