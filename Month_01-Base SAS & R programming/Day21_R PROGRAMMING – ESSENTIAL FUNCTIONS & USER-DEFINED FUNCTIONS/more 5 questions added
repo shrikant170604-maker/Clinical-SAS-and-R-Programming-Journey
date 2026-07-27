@@ -1,0 +1,196 @@
+🔥 Final 5 Logic-Based R Questions
+Q1 — Patient Screening
+
+A clinical study has the following patients:
+
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+age <- c(25,62,48,71,35,55,67,60)
+
+weight <- c(58,74,63,81,69,72,79,76)
+
+The study team wants to identify patients who are 60 years or older and weigh at least 75 kg.
+
+Your program should return the subject IDs meeting both criteria.
+
+Expected result:
+
+SUB004 SUB007 SUB008
+Q2 — Treatment Selection
+
+A study has assigned patients to different treatments:
+
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+treatment <- c("DrugA","DrugB","DrugA","Placebo",
+               "DrugB","DrugA","Placebo","DrugA")
+
+The clinical team wants a list of all subjects who received DrugA.
+
+Return only their subject IDs.
+
+Expected result:
+
+SUB001 SUB003 SUB006 SUB008
+Q3 — Eligibility Decision
+
+A study has the following information:
+
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005")
+
+age <- c(17,25,62,45,70)
+
+weight <- c(55,60,72,48,80)
+
+A patient can participate in the study only if they:
+
+are at least 18 years old
+AND weigh at least 50 kg
+
+The study coordinator wants the program to classify each patient as either:
+
+"Eligible"
+
+or
+
+"Not Eligible"
+
+For example, the result should correspond to:
+
+SUB001 → Not Eligible
+SUB002 → Eligible
+...
+
+Design your own function to perform this classification.
+
+Q4 — Risk Classification 🔥
+
+A clinical team wants to classify patients according to age and weight.
+
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+age <- c(25,62,48,71,35,55,67,60)
+
+weight <- c(58,74,63,81,69,72,79,76)
+
+The rules are:
+
+High Risk → age ≥ 60 AND weight ≥ 75
+Moderate Risk → age ≥ 60 OR weight ≥ 75
+Low Risk → everyone else
+
+The output should classify each patient.
+
+Don't just return the high-risk patients. The function should produce a risk classification for every subject.
+
+Q5 — 🧠 Final Challenge: Study Review
+
+You are given:
+
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008","SUB009","SUB010")
+
+age <- c(25,62,48,71,35,55,67,60,42,73)
+
+weight <- c(58,74,63,81,69,72,79,76,65,82)
+
+treatment <- c("DrugA","DrugB","DrugA","DrugA","DrugB",
+               "DrugA","DrugC","DrugA","DrugB","DrugC")
+
+A clinical programmer is asked to create a reusable tool for the study team.
+
+The tool must answer these three questions at the same time:
+
+Which patients are 60+ years old?
+Which patients weigh 75 kg or more?
+Which patients received DrugA?
+
+The study team wants all three answers returned together so they can review them easily.
+
+===================================================================================================================================================================================
+SOLUTION             SOLUTION            SOLUTION                SOLUTION                 SOLUTION          SOLUTION               SOLUTION                   SOLUTION
+===================================================================================================================================================================================
+#Q1
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+age <- c(25,62,48,71,35,55,67,60)
+
+weight <- c(58,74,63,81,69,72,79,76)
+
+get_high_risk=function(subject,age,weight){
+  a=subject[age>=60 & weight>=75]
+  return(a)
+}
+get_high_risk(subject,age,weight)
+
+#Q2
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+treatment <- c("DrugA","DrugB","DrugA","Placebo",
+               "DrugB","DrugA","Placebo","DrugA")
+
+getting_drugA=function(subject,treatment){
+  a=subject[treatment=="DrugA"]
+  return(a)
+}
+getting_drugA(subject,treatment)
+
+#Q3
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005")
+
+age <- c(17,25,62,45,70)
+
+weight <- c(55,60,72,48,80)
+
+elegible_condition=function(subject){
+  a=age>=18
+  b=weight>=50
+  com=ifelse(a & b,"Eligible","Not Eligible")
+  return(data.frame(subject,com))
+}
+elegible_condition(subject)
+names(t)=c("SUB001","SUB002","SUB003","SUB004","SUB005")
+t
+#Q4
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008")
+
+age <- c(25,62,48,71,35,55,67,60)
+
+weight <- c(58,74,63,81,69,72,79,76)
+
+risk_classification=function(subject,age,weight){
+  risk=ifelse(age>=60 & weight>=75,"High Risk",ifelse(age>=60 | weight>=75,"Moderate risk","Low Risk"))
+  return(data.frame(subject,risk))
+}
+risk_classification(subject, age, weight)
+#Q5
+subject <- c("SUB001","SUB002","SUB003","SUB004","SUB005",
+             "SUB006","SUB007","SUB008","SUB009","SUB010")
+
+age <- c(25,62,48,71,35,55,67,60,42,73)
+
+weight <- c(58,74,63,81,69,72,79,76,65,82)
+
+treatment <- c("DrugA","DrugB","DrugA","DrugA","DrugB",
+               "DrugA","DrugC","DrugA","DrugB","DrugC")
+age <- c(25,62,48,71,35,55,67,60,42,73)
+
+weight <- c(58,74,63,81,69,72,79,76,65,82)
+
+treatment <- c("DrugA","DrugB","DrugA","DrugA","DrugB",
+               "DrugA","DrugC","DrugA","DrugB","DrugC")
+
+clasify=function(subject){
+  a=subject[age>60]
+  b=subject[weight>=75]
+  c=subject[treatment=="DrugA"]
+  frame=list(Senior=a,heavy=b,drugA=c)
+  return(frame)
+}
+clasify(subject)
