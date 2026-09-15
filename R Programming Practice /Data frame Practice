@@ -209,6 +209,183 @@ Q38. Lowest scorer
 
 Identify the student with the lowest Score.
 
+
+==================================================================   SOLUTIONS ===============================================================================================
+students <- data.frame(
+  ID = c(101, 102, 103, 104, 105, 106, 107, 108),
+  Name = c("Amit", "Priya", "Rahul", "Sneha", "Vikram", "Neha", "Arjun", "Kiran"),
+  Age = c(21, 22, 20, 23, 21, 24, 22, 19),
+  Score = c(78, 92, 65, 88, 55, 95, 72, 61),
+  Department = c("SAS", "R", "SAS", "R", "Python", "SAS", "Python", "R")
+)
+
+#Level 1:
+#q1
+View(students)
+
+#q2
+students[,"Name"]
+
+#q3
+students[,c("Name","Score")]
+
+#q4
+students[1:4,]
+
+#q5
+students[-(1:4),]
+
+#q6
+students[c(2,4,6),]
+
+#q7
+students[,c("Name","Age","Department")]
+
+#q8
+students[3,"Score"]
+
+#q9
+students[students$ID==106,]
+
+#q10
+nrow(students)
+ncol(students)
+
+#LEVEL 2 :
+
+#q11
+students[students$Score>80,]
+
+#q12
+students[students$Age>=22,]
+
+#q13
+students[students$Department=="SAS",]
+
+#q14
+students[students$Score>=70 & students$Score<=90,]
+
+#q15
+students[students$Age<=21 & students$Score>60,]
+
+#q16
+students[students$Department=="SAS" | students$Score>90,]
+
+#q17
+students[students$Department!="Python",]
+
+#q18
+students[students$Score>=75,c("Name","Score")]
+
+#LEVEL 3
+
+#q19
+students$New_score=students$Score+5
+students
+
+#q20
+students$Status=ifelse(students$Score>=70,"Pass","Fail")
+students
+
+#q21
+students$Grade=ifelse(students$Score>=90,"A",
+                      ifelse(students$Score>75,"B",
+                             ifelse(students$Score>=60,"C","D"
+                                )))
+students
+
+#q22
+students$Age_group=ifelse(students$Age >=23,"Senior",
+                          ifelse(students$Age>=21,"Adult","Young"))
+students
+
+#q23
+students$Result=ifelse(students$Department=="SAS" & students$Score>=70,"SAS Qualified",
+                       ifelse(students$Department=="SAS" & students$Score<70,"SAS Not Qualified","Other Department"))
+students
+
+#q24
+students$Bonus=ifelse(students$Score>=90,students$Score+10,students$Score+5)
+students
+
+#LEVEL 4 :
+
+#q25
+students[order(students$Score),]
+
+#q26
+students[order(students$Score,decreasing = TRUE),]
+
+#q27
+students[order(students$Age,decreasing = TRUE),]
+
+#q28
+sas_students=students[students$Department=="SAS",]
+sas_students[order(sas_students$Score,decreasing =TRUE),]
+sas_students
+
+
+#q29
+D=students[order(students$Department),c("Name","Department","Score")]
+D
+
+#Level 5
+
+#q30
+r_students=students[students$Department=="R" & students$Score>=70,c("Name","Age","Score")]
+r_students=r_students[order(r_students$Score,decreasing = TRUE),]
+r_students
+
+#q31
+students[(students$Department=="SAS" & students$Score>=70)|(students$Department=="R" & students$Score>=80),c("Name","Department","Score")]
+
+
+#q32
+high_to_age=students[students$Age>=21 & students$Score>=70,c("Name","Age","Score")]
+high_to_age
+
+high_to_age=high_to_age[order(high_to_age$Age, decreasing = TRUE),]
+high_to_age
+
+#q33
+Q=students[students$Department!="Python" & students$Score>70]
+Q=Q[order(Q$Score,decreasing = TRUE),]
+Q
+
+#q34
+Passed_students=students[students$Score>=70]
+Passed_students$Performance=ifelse(Passed_students$Score>=90,"Excellent",
+                                   ifelse(Passed_students>=80,"Good","Average"))
+Passed_students
+
+
+#Level 6
+
+#q35
+
+students$Eligibility=ifelse(
+  students$Department=="SAS" &
+   students$Age>=21 &
+    students$Score>=70,"Eligible",
+     ifelse(
+       students$Department=="SAS","Not Eligible ","Not Applicable"))
+students                                  
+
+
+#q37
+higest_score=students[order(students$Score,decreasing = TRUE),]
+higest_score
+higest_score=higest_score[1,]
+higest_score
+
+#q38
+lowest_score=students[order(students$Score),]
+lowest_score=lowest_score[1,]
+lowest_score
+
+#q39
+higest_score[1:3,]
+
 Q39. Top 3 students
 
 Create a dataframe containing the three students with the highest scores.
