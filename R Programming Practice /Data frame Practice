@@ -1,0 +1,214 @@
+R Data Frame Practice — Level 1 → Level 4
+Dataset
+
+Run this first:
+
+students <- data.frame(
+  ID = c(101, 102, 103, 104, 105, 106, 107, 108),
+  Name = c("Amit", "Priya", "Rahul", "Sneha", "Vikram", "Neha", "Arjun", "Kiran"),
+  Age = c(21, 22, 20, 23, 21, 24, 22, 19),
+  Score = c(78, 92, 65, 88, 55, 95, 72, 61),
+  Department = c("SAS", "R", "SAS", "R", "Python", "SAS", "Python", "R")
+)
+Level 1 — Basic Data Frame Operations
+Q1. Display the complete dataframe.
+Q2. Display only the Name column.
+Q3. Display only Name and Score.
+Q4. Display the first 4 observations.
+Q5. Display the last 3 observations.
+Q6. Display the 2nd, 4th, and 6th observations.
+Q7. Display the Name, Age, and Department columns.
+Q8. Display the value of Score for the student in observation 3.
+Q9. Display the entire row for the student whose ID is 106.
+Q10. Find the number of rows and columns in the dataframe.
+Level 2 — Filtering Rows
+Q11.
+
+Display students whose:
+
+Score > 80
+Q12.
+
+Display students whose:
+
+Age >= 22
+Q13.
+
+Display students belonging to the "SAS" department.
+
+Q14.
+
+Display students whose score is between 70 and 90, inclusive.
+
+Q15.
+
+Display students whose:
+
+Age <= 21 AND Score > 60
+Q16.
+
+Display students who belong to "SAS" OR have a score greater than 90.
+
+Q17.
+
+Display students who are not from the "Python" department.
+
+Q18.
+
+Display only:
+
+Name | Score
+
+for students whose score is ≥ 75.
+
+Level 3 — Creating and Modifying Variables
+Q19.
+
+Create a new column called New_Score by adding 5 marks to every student's score.
+
+Q20.
+
+Create a column called Status:
+
+Score >= 70 → "Pass"
+Score < 70  → "Fail"
+Q21.
+
+Create a column called Grade:
+
+Score >= 90 → A
+Score >= 75 → B
+Score >= 60 → C
+Score < 60  → D
+
+Use nested ifelse().
+
+Q22.
+
+Create an Age_Group column:
+
+Age >= 23 → "Senior"
+Age >= 21 → "Adult"
+Age < 21  → "Young"
+Q23.
+
+Create a Result column:
+
+SAS + Score >= 70 → "SAS Qualified"
+SAS + Score < 70  → "SAS Not Qualified"
+Other departments → "Other Department"
+Q24.
+
+Create a column called Bonus:
+
+Score >= 90 → Score + 10
+Score < 90  → Score + 5
+Level 4 — Sorting
+Q25.
+
+Sort the entire dataframe by Score from lowest to highest.
+
+Q26.
+
+Sort the dataframe by Score from highest to lowest.
+
+Q27.
+
+Sort the dataframe by Age from highest to lowest.
+
+Q28.
+
+Create a dataframe called sas_students containing only SAS students and sort them by Score descending.
+
+Q29.
+
+Create a dataframe containing only:
+
+Name | Department | Score
+
+and sort it by Department alphabetically.
+
+Level 5 — Combining Filtering + Selection + Sorting
+
+These are closer to the type of logic you need to become comfortable with.
+
+Q30.
+
+Find students from the R department whose score is ≥ 70.
+
+Return only:
+
+Name | Age | Score
+
+Sort by Score descending.
+
+Q31.
+
+Find students who are either:
+
+SAS with Score >= 70
+OR
+R with Score >= 80
+
+Return:
+
+Name | Department | Score
+Q32.
+
+Find students who:
+
+Age >= 21
+AND
+Score >= 70
+
+Return only Name, Age, and Score, sorted by Age descending.
+
+Q33.
+
+Find students who are not from Python and have a score greater than 70.
+
+Sort by Score descending.
+
+Q34.
+
+Create a dataframe containing only students who passed (Score >= 70), then create a new column:
+
+Performance
+
+using:
+
+Score >= 90 → Excellent
+Score >= 80 → Good
+Score >= 70 → Average
+Level 6 — Challenge Questions
+Q35. Two-condition classification
+
+Create Eligibility:
+
+SAS + Age >= 21 + Score >= 70 → Eligible
+SAS + otherwise               → Not Eligible
+Non-SAS                       → Not Applicable
+Q36. Multiple filtering logic
+
+Return students satisfying:
+
+(Department == "SAS" OR Department == "R")
+AND
+Score >= 70
+
+Display:
+
+ID | Name | Department | Score
+Q37. Highest scorer
+
+Write R code to identify the student with the highest Score.
+
+Do not manually identify the student's name.
+
+Q38. Lowest scorer
+
+Identify the student with the lowest Score.
+
+Q39. Top 3 students
+
+Create a dataframe containing the three students with the highest scores.
