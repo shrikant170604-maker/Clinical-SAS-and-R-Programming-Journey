@@ -1,0 +1,139 @@
+Question 1 (DATA step – create subset data set)
+
+Write a complete DATA step that:
+
+Creates a temporary SAS data set named WORK.TEENCLASS
+Reads from the existing data set SASHELP.CLASS
+Keeps only observations where Age is greater than 13
+Drops the variable Weight (do not include it in the output data set)
+
+Question 2 (LIBNAME + CONTENTS)
+
+Write the SAS statements that:
+
+Assign the libref MYDATA to the folder C:\SAS\CertData (assume this folder exists and contains SAS data sets).
+Then run a PROC CONTENTS that lists only the names of the data sets in that library (no variable-level details).
+
+Question 3 (PROC IMPORT – Excel file)
+
+Write a complete PROC IMPORT step that:
+
+Reads the Microsoft Excel file C:\SAS\CertData\class.xlsx
+Creates the temporary SAS data set WORK.CLASSXLS
+Uses DBMS=XLSX
+Replaces the data set if it already exists
+
+Question 4 (Concatenate SAS data sets)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.ALLSTUDENTS
+Concatenates the two existing SAS data sets WORK.FALLCLASS and WORK.SPRINGCLASS (they have identical structure)
+
+Question 5 (One-to-one merge)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.COMBINED
+Match-merges the two existing SAS data sets WORK.DEMO and WORK.SCORES
+Matches on the common variable ID (both data sets are already sorted by ID)
+
+Question 6 (One-to-many merge)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.ORDERS_CUST
+Match-merges WORK.CUSTOMERS (one row per CustomerID) with WORK.ORDERS (many rows per CustomerID)
+Matches on the common variable CustomerID
+Both data sets are already sorted by CustomerID
+Submit only the SAS code.
+
+Question 7 (Create and display SAS date values)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.NEWHIRES
+Contains the two variables Employee (character, length 20) and StartDate (numeric SAS date)
+Has exactly one observation: Employee = 'Jones' and StartDate equal to the SAS date value for 12 March 2018 (use the MDY function)
+Applies the DATE9. format to StartDate so the value displays as 12MAR2018
+Submit only the SAS code.
+
+Question 8 (Read dates with an informat + DATALINES)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.EVENTS
+Reads the two raw-data lines below with DATALINES
+Creates EventDate as a SAS date value and EventName as character length 15
+Uses the DATE9. informat to read the dates
+Applies the DATE9. format so EventDate displays as ddMMMyyyy
+
+Question 9 (SAS/ACCESS XLSX engine)
+
+Write the SAS statements that:
+
+Assign the libref XL to the Excel file C:\SAS\CertData\sales.xlsx using the XLSX engine
+Then create a temporary SAS data set WORK.Q1SALES that contains only the data from the worksheet named Q1 inside that Excel file
+Submit only the SAS code.
+
+Question 10 (PROC IMPORT – delimited file)
+
+Write a complete PROC IMPORT step that:
+
+Reads the tab-delimited file C:\SAS\CertData\products.txt
+Creates the temporary SAS data set WORK.PRODUCTS
+Uses DBMS=DLM
+Replaces the data set if it already exists
+Uses the DELIMITER statement to specify a tab
+Uses the GUESSINGROWS statement with a value of 1000
+
+Question 11 (WHERE statement + KEEP= data set option)
+
+Write a complete DATA step that:
+
+Creates the temporary data set WORK.TALLMALES
+Reads from SASHELP.CLASS
+Uses a WHERE statement to keep only observations where Sex = 'M' and Height > 65
+Uses the KEEP= data set option so that only the variables Name, Age and Height are written to the output data set
+
+Question 12 (IF statement + DROP statement + permanent data set)
+
+Write a complete DATA step that:
+
+Creates the permanent SAS data set MYDATA.ADULTS (the libref MYDATA is already assigned)
+Reads from SASHELP.CLASS
+Uses a subsetting IF statement to keep only observations where Age is greater than or equal to 15
+Uses a DROP statement so that the variable Height is not written to the output data set
+
+Question 13 (DROP= data set option on SET + KEEP statement + subsetting IF)
+
+Write a complete DATA step that:
+
+Creates the temporary SAS data set WORK.YOUNG
+Reads from SASHELP.CLASS using the DROP= data set option on the SET statement so that the variable Weight is never processed (never enters the PDV)
+Uses a subsetting IF statement to keep only observations where Age is less than 14
+Uses a KEEP statement so that only the variables Name, Sex and Age are written to the output data set.
+
+Question 15 (increased difficulty – XLSX engine + DATA step + WHERE + DROP= + KEEP + SAS date constant + FORMAT)
+
+Write the complete SAS code (LIBNAME statement + DATA step) that does all of the following:
+
+Assigns the libref EMPXL to the Excel file C:\SAS\Exam\staff.xlsx using the XLSX engine.
+Creates the temporary SAS data set WORK.RECENTHIRES.
+Reads the worksheet named Employees (i.e., EMPXL.Employees).
+Uses the DROP= data set option on the SET statement so that the variables Bonus and Commission never enter the PDV.
+Uses a WHERE statement to keep only observations where StartDate is on or after 15 May 2017.
+ StartDate is already a SAS date value; you must use a SAS date constant in the WHERE statement.
+Uses a KEEP statement so that only the variables EmpName, Dept and StartDate are written to the output data set.
+
+Question 16 (combined DATA step – concatenate + WHERE + KEEP= + DROP + date format)
+
+Write a complete DATA step that does all of the following:
+
+Creates the permanent SAS data set MYLIB.ALLEMPS (the libref MYLIB is already assigned).
+Concatenates the two existing SAS data sets WORK.EMP2017 and WORK.EMP2018 (identical structure; both already contain a numeric SAS date variable named HireDate).
+Uses the KEEP= data set option on the DATA statement so that only EmpID, Dept, Salary and HireDate are written to the output data set.
+Uses a WHERE statement to keep only observations where HireDate is on or after 1 January 2018 (use a SAS date constant).
+Uses a DROP statement so that Salary is not written to the output data set (even though it was listed on KEEP=).
+Applies the DATE9. format to HireDate.
+Applies the MMDDYY10. format to StartDate.
